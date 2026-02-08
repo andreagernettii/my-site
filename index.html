@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andrea Gernetti</title>
+  <style>
+    body {
+      /* very light neutral background for a clean look */
+      background: #f7f7f5;
+      color: #1f2933;
+      font-family: Chalkboard, "Chalkboard SE", "Comic Sans MS", "Segoe UI", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 50px 20px;
+    }
+
+    img.profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(16,24,32,0.06);
+    }
+
+    /* Decorative animated border around profile image */
+    .profile-wrapper {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .profile-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, rgba(31,41,51,0.06), transparent 30%);
+      z-index: -1;
+      filter: blur(6px);
+      opacity: 0.95;
+    }
+
+    /* outer decorative ring */
+    .profile-wrapper::after {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      right: -12px;
+      bottom: -12px;
+      border-radius: 50%;
+      background: conic-gradient(from 120deg, #f59e0b, #ef4444, #06b6d4, #7c3aed, #f59e0b);
+      z-index: -2;
+      filter: blur(10px) saturate(110%);
+      opacity: 0.22;
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .profile-wrapper:hover::after {
+      opacity: 0.35;
+      transform: scale(1.02);
+    }
+
+    @keyframes rotateGradient {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2em;
+      margin: 0;
+      /* gradient text and subtle glow */
+      background: linear-gradient(90deg,#6b7280,#374151,#6b7280);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 6px rgba(16,24,32,0.04);
+      animation: hueShift 6s linear infinite;
+    }
+
+    @keyframes hueShift {
+      0% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(20deg); }
+      100% { filter: hue-rotate(0deg); }
+    }
+
+    .socials {
+      margin: 10px 0 20px;
+    }
+
+    .socials a {
+      color: #f0f0f0;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1.5em;
+    }
+
+    #greeting {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+
+    /* greeting fade animation */
+    #greeting.fade {
+      animation: fadeIn 700ms ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      max-width: 600px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* reveal-on-scroll default */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    a {
+      color: #1e40af;
+      text-decoration: underline;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      margin: 0 8px;
+      border-radius: 8px;
+      background: rgba(16,24,32,0.03);
+      transition: transform 180ms ease, background 180ms ease;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .socials a svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .socials a:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.06);
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-wrapper">
+    <img src="IMG_7903.jpeg" alt="Profile" class="profile">
+  </div>
+
+  <h1>Andrea Gernetti</h1>
+  <div class="socials">
+    <a href="https://github.com/andreagernettii" aria-label="GitHub" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.205 11.387.6.111.82-.261.82-.579 0-.286-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.76-1.605-2.665-.305-5.467-1.335-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.124-.303-.535-1.525.117-3.176 0 0 1.007-.322 3.3 1.23a11.48 11.48 0 0 1 3-.405c1.02.005 2.045.138 3 .405 2.29-1.552 3.295-1.23 3.295-1.23.653 1.65.243 2.873.12 3.176.77.84 1.232 1.91 1.232 3.22 0 4.61-2.807 5.62-5.48 5.92.43.372.81 1.102.81 2.222 0 1.604-.015 2.896-.015 3.286 0 .32.216.694.825.576C20.565 21.795 24 17.297 24 12 24 5.373 18.627 0 12 0z"/></svg>
+      
+    </a>
+    <a href="https://x.com/gernettiandreaa" aria-label="Twitter" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true" role="img" focusable="false">
+        <path fill="currentColor" d="M23.643 4.937c-.835.371-1.732.622-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13C18.61 3.6 17.45 3 16.17 3c-2.346 0-4.247 1.9-4.247 4.246 0 .333.037.657.11.967-3.531-.177-6.665-1.866-8.758-4.437-.365.626-.574 1.354-.574 2.128 0 1.47.748 2.769 1.887 3.53-.693-.022-1.345-.212-1.914-.529v.053c0 2.052 1.46 3.766 3.397 4.154-.355.097-.73.149-1.116.149-.273 0-.538-.027-.797-.077.539 1.683 2.102 2.909 3.952 2.943-1.446 1.133-3.266 1.808-5.246 1.808-.341 0-.678-.02-1.01-.059C8.86 21.29 11.3 22 13.95 22c5.918 0 9.16-4.9 9.16-9.16 0-.14-.003-.28-.01-.42.63-.455 1.18-1.02 1.614-1.66-.578.256-1.2.427-1.85.506.669-.4 1.184-1.038 1.427-1.795z"/>
+      </svg>
+      
+    </a>
+    <a href="https://www.instagram.com/andreagernettii/" aria-label="Instagram" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 7.5A4.5 4.5 0 1 0 16.5 14 4.5 4.5 0 0 0 12 9.5zM18.5 6a1.1 1.1 0 1 0 1.1 1.1A1.1 1.1 0 0 0 18.5 6z"/></svg>
+      
+    </a>
+    <a href="mailto:andreagrn.dev@icloud.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+
+  <div id="greeting">Ciao! 🇮🇹</div>
+
+  <p>
+    <strong>Hello!</strong> My name is <strong>Andrea</strong>, I'm 17 years old, and I'm <u>passionate about coding and technology</u>. 
+    <br><br>
+    I love <strong>creating things from scratch</strong>, turning ideas into real projects while listening to music—my favorite artist is <strong>Luca D'Orsi</strong>, also known as <strong>Capo Plaza</strong>, whose tracks keep me focused and inspired. 
+    <br><br>
+    I mainly use my <strong>MacBook Pro M5</strong> for programming and designing, my <strong>AirPods Pro 3</strong> to fully immerse myself in the creative process, and my <strong>iPhone 15 Pro Max</strong> for communication and testing apps. 
+    <br><br>
+    Over the past year, I've explored several languages like <strong>C++, Java, HTML, CSS, JavaScript</strong>, and especially <strong>Swift</strong>, which has become my favorite and the one I use the most. 
+    <br><br>
+    If you're curious to see the projects I've been building and experimenting with, feel free to click <a href="https://github.com/andreagernettii" target="_blank" rel="noopener"><strong>here</strong></a> to explore them—it's a collection that shows my <u>growth, creativity, and love for coding</u>.
+  </p>
+
+  <script>
+    const greetings = [
+      { text: "Ciao!", flag: "🇮🇹" },
+      { text: "Hello!", flag: "🇬🇧" },
+      { text: "Bonjour!", flag: "🇫🇷" },
+      { text: "Hola!", flag: "🇪🇸" },
+      { text: "Hallo!", flag: "🇩🇪" },
+      { text: "Olá!", flag: "🇵🇹" },
+      { text: "Привет!", flag: "🇷🇺" },
+      { text: "こんにちは!", flag: "🇯🇵" },
+      { text: "안녕하세요!", flag: "🇰🇷" },
+      { text: "你好!", flag: "🇨🇳" },
+      { text: "Merhaba!", flag: "🇹🇷" },
+      { text: "Γεια σου!", flag: "🇬🇷" },
+      { text: "Cześć!", flag: "🇵🇱" },
+      { text: "Hej!", flag: "🇸🇪" },
+      { text: "Hei!", flag: "🇳🇴" },
+      { text: "Ahoj!", flag: "🇨🇿" },
+      { text: "Salam!", flag: "🇦🇪" },
+      { text: "Namaste!", flag: "🇮🇳" },
+      { text: "Xin chào!", flag: "🇻🇳" },
+      { text: "Sawubona!", flag: "🇿🇦" }
+    ];
+
+    let index = 0;
+    const greetingDiv = document.getElementById('greeting');
+
+    setInterval(() => {
+      index = (index + 1) % greetings.length;
+      // trigger fade animation by removing and re-adding class
+      greetingDiv.classList.remove('fade');
+      // force reflow to restart animation
+      void greetingDiv.offsetWidth;
+      greetingDiv.textContent = greetings[index].text + " " + greetings[index].flag;
+      greetingDiv.classList.add('fade');
+    }, 2000);
+  </script>
+
+  <script>
+    // reveal-on-scroll for paragraphs, headings and social links
+    (function(){
+      const els = document.querySelectorAll('p, h1, .socials a, #greeting');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+
+      els.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+    })();
+  </script>
+
+  <!-- Optional: Font Awesome for social icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
